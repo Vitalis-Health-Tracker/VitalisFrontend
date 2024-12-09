@@ -7,7 +7,6 @@ const AddCustomFood = ({ addCustomFood }) => {
   const [proteinPer100g, setProteinPer100g] = useState("");
   const [fatPer100g, setFatPer100g] = useState("");
 
-  // Handle adding a custom food item with calculated nutritional values
   const handleSubmit = () => {
     if (
       !foodName ||

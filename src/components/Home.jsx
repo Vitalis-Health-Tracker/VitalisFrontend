@@ -24,23 +24,19 @@ const Home = () => {
   const { isLoggedIn } = useAuth();
   const [showContent, setShowContent] = useState(false);
    useEffect(() => {
-     // Show content after the typewriter finishes
      const timer = setTimeout(() => {
        setShowContent(true);
-     }, 3000); // Adjust timing as needed
+     }, 3000); 
      return () => clearTimeout(timer);
    }, []);
 
-  // States for image carousel
   const [currentImage, setCurrentImage] = useState(0);
   const [fadeClass, setFadeClass] = useState("opacity-100");
   const images = ["/gym.jpeg", "/diet.jpeg", "/sleep.jpeg"];
 
-  // States for typewriter and healthy visibility
   const [lineIndex, setLineIndex] = useState(0);
   const [healthyVisible, setHealthyVisible] = useState(false);
 
-  // Navigate to dashboard if logged in
   useEffect(() => {
     if (isLoggedIn) {
       navigate(`/dashboard`);
@@ -106,7 +102,7 @@ const Home = () => {
                   typeSpeed={100}
                   onType={(arrayIndex) => {
                     if (arrayIndex === 0) {
-                      setTimeout(() => setHealthyVisible(true), 500); // Delay before "Healthy!"
+                      setTimeout(() => setHealthyVisible(true), 500); 
                     }
                   }}
                 />
@@ -189,8 +185,8 @@ const Home = () => {
               className="bg-Grey bg-opacity-40 backdrop-blur-lg rounded-lg shadow-lg overflow-hidden group transition"
               initial="hidden"
               whileInView="visible"
-              variants={cardVariants} // Ensure variants are defined
-              viewport={{ once: true, amount: 0.5 }} // Trigger when 50% of the card is visible
+              variants={cardVariants} 
+              viewport={{ once: true, amount: 0.5 }} 
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <div className="relative h-56">

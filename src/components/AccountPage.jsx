@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "./AuthContext";
-import { useNavigate } from "react-router-dom"; // For navigation after logout
+import { useNavigate } from "react-router-dom"; 
 
 const AccountPage = () => {
   const [activeTab, setActiveTab] = useState("accountInfo");
-  const navigate = useNavigate(); // For navigation after logout
+  const navigate = useNavigate(); 
 
-  // State variables for form inputs
   const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState(""); // Email fetched automatically
+  const [email, setEmail] = useState(""); 
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [weight, setWeight] = useState("");
@@ -97,7 +96,7 @@ const AccountPage = () => {
     }
   }
 
-  // Handle form submit for account info update
+ 
   const handleAccountUpdateSubmit = async (e) => {
     e.preventDefault();
     console.log({
@@ -117,7 +116,7 @@ const AccountPage = () => {
 
     await sendUser(user)
 
-    // Switch back to account info tab after update
+    
     setActiveTab("accountInfo");
   };
 
@@ -151,7 +150,6 @@ const AccountPage = () => {
     }
   }
 
-  // Handle form submit for deleting account
   const handleDeleteAccount = async () => {
     if (
       window.confirm(
@@ -167,12 +165,9 @@ const AccountPage = () => {
     }
   };
 
-  // Handle user logout
   const handleLogout = () => {
-    // Add your logout logic here (e.g., clearing tokens, state, etc.)
     sessionStorage.clear();
     logout();
-    // Redirect to the home page after logout
     navigate("/login"); // Redirect to login page
   };
 

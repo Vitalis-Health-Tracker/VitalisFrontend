@@ -30,7 +30,6 @@ const Fitness = () => {
   const [workoutList, setWorkoutList] = useState([]);
   const [totalCalories, setTotalCalories] = useState(0);
 
-  // Fetch workout options when the component mounts
   useEffect(() => {
     const loadWorkoutData = async () => {
       const workouts = await fetchWorkoutData();
@@ -39,7 +38,6 @@ const Fitness = () => {
     loadWorkoutData();
   }, []);
 
-  // Handle adding a workout with sets, reps, and duration
   const addWorkout = async () => {
     if (!selectedWorkout || !sets || !reps || !duration) return;
 
@@ -49,7 +47,7 @@ const Fitness = () => {
         parseInt(reps) *
         workout.calories *
         parseInt(duration)) /
-      60; // Example calculation
+      60; 
 
     const workoutWithDetails = {
       name: workout.name,

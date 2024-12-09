@@ -49,7 +49,6 @@ const Dashboard = () => {
   const [dietWeekData, setDietWeekData] = useState([]);
   const [sleepWeekData, setSleepWeekData] = useState([]);
 
-  // Fetch user data from userService
   const fetchUserData = async () => {
     const userId = sessionStorage.getItem("userId");
     if (!userId) {
@@ -60,7 +59,7 @@ const Dashboard = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:9088/user/${userId}/get-details`, // Use userId here directly
+        `http://localhost:9088/user/${userId}/get-details`,
         {
           method: "GET",
           headers: {
@@ -84,7 +83,7 @@ const Dashboard = () => {
   };
 
   const fetchData = async () => {
-    const userId = sessionStorage.getItem("userId"); // Use userId here directly
+    const userId = sessionStorage.getItem("userId");
     if (!userId) {
       setError("User ID not found in session storage.");
       setLoading(false);
@@ -128,15 +127,10 @@ const Dashboard = () => {
         wellbeingRes.json(),
       ]);
 
-      // const fitnessData = await fitnessRes.json();
-      // const dietData = await dietRes.json();
-      // const wellbeingData = await wellbeingRes.json();
-
       setFitnessData(fitnessData);
       setDietData(dietData);
       setWellbeingData(wellbeingData);
 
-      // Directly access the first available log (if any)
       const todaysWorkout =
         fitnessData.logs?.[0]?.workout || "No workout logged.";
       const todaysFood = dietData.logs?.[0]?.food || "No meals logged.";
@@ -153,21 +147,6 @@ const Dashboard = () => {
       setLoading(false);
     }
   };
-
-  // const getLastWeekDates = () => {
-  //   const today = new Date();
-  //   const formatDate = (date) => {
-  //     return date.toISOString().split("T")[0] + "T00:00:00";
-  //   };
-  //   const lastWeek = Array.from({ length: 7 }, (_, i) => {
-  //     const date = new Date();
-  //     date.setDate(today.getDate() - i - 1);
-  //     return formatDate(date);
-  //   }).reverse();
-  //   return { startDate: lastWeek[0], endDate: lastWeek[6] };
-  // };
-
-  // const { startDate, endDate } = getLastWeekDates();
 
   const fetchReportData = async () => {
     const userId = sessionStorage.getItem("userId");
@@ -205,7 +184,7 @@ const Dashboard = () => {
       // Map Diet Week Data
       setDietWeekData(
         data.diet.map((item) => ({
-          date: item.dietDate.split("T")[0], // Extract date part (YYYY-MM-DD)
+          date: item.dietDate.split("T")[0], 
           caloriesConsumed: item.totalCaloriesConsumed,
         }))
       );
@@ -243,7 +222,6 @@ const Dashboard = () => {
   console.log("Diet Data:", dietData);
   console.log("Wellbeing Data:", wellbeingData);
 
-  // Calculate BMR and calories required
   const calculateBMR = () => {
     if (!userInfo) return 0;
     const { weight, height, age, gender } = userInfo;
@@ -409,8 +387,10 @@ const Dashboard = () => {
               <p>
                 <strong>Net Calories:</strong>{" "}
                 <span className="text-Quaternary">
-                  {(dietData.totalCaloriesConsumed.toFixed(2) -
-                    fitnessData.totalCaloriesBurned.toFixed(2)).toFixed(2)}
+                  {(
+                    dietData.totalCaloriesConsumed.toFixed(2) -
+                    fitnessData.totalCaloriesBurned.toFixed(2)
+                  ).toFixed(2)}
                 </span>{" "}
                 kcal
               </p>
@@ -532,7 +512,7 @@ const Dashboard = () => {
                 <p>
                   <strong>Your Calories:</strong>{" "}
                   <span className="text-Quaternary">
-                    {summary.UserCalories.toFixed(2)/7}
+                    {summary.UserCalories.toFixed(2) / 7}
                   </span>{" "}
                   kcal
                 </p>

@@ -10,20 +10,6 @@ const Navbar = () => {
   const [content, setContent] = useState();
   const { isLoggedIn } = useAuth();
 
-  // async function letterCheck() {
-  //   const response = await fetch(
-  //     "http://localhost:9088/user/" + sessionStorage.getItem(`userId`)+"/get-details",
-  //     {
-  //       method: "GET",
-  //       headers: { "Content-Type": "application/json",
-  //         Authorization: `Bearer ${sessionStorage.getItem('token')}`,
-  //        },
-  //     }
-  //   );
-  //   const user = await response.json();
-  //   return user.userName.charAt(0).toUpperCase();
-  // }
-
   useEffect(() => {
     setLogcheck(sessionStorage.getItem('isLoggedIn'))
     if (logcheck === "true") {

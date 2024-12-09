@@ -7,7 +7,7 @@ const WellBeing = () => {
   const [sleepHours, setSleepHours] = useState("");
   const [mood, setMood] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [suggestion, setSuggestion] = useState(""); // New state for suggestion
+  const [suggestion, setSuggestion] = useState(""); 
 
   const wellbeing = {
     sleepTime: sleepHours,
@@ -46,7 +46,7 @@ const WellBeing = () => {
   };
 
   const handleSubmit = async () => {
-    const lowSleepThreshold = 6; // Define threshold for "low sleep"
+    const lowSleepThreshold = 6; 
     const sleepStatus =
       sleepHours < lowSleepThreshold ? "lowSleep" : "goodSleep";
 

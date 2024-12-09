@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import AddCustomFood from "./AddCustomFood";
 import { useNavigate } from "react-router-dom";
 
-// Fetch food data from API
 const fetchFoodData = async () => {
   try {
     const response = await fetch(
@@ -31,7 +30,6 @@ const Diet = () => {
   const [totalProtein, setTotalProtein] = useState(0);
   const [totalFat, setTotalFat] = useState(0);
 
-  // Fetch food options when the component mounts
   useEffect(() => {
     const loadFoodData = async () => {
       const foods = await fetchFoodData();
@@ -40,7 +38,6 @@ const Diet = () => {
     loadFoodData();
   }, []);
 
-  // Handle adding a food item to the list with portion size in grams
   const addFood = async () => {
     if (!selectedFood || !grams) return;
 

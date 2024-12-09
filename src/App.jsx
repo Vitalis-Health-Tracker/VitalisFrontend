@@ -6,7 +6,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { AuthProvider } from "./components/AuthContext";
-import { motion } from "framer-motion"; // Import motion from Framer Motion
+import { motion } from "framer-motion"; 
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Fitness from "./components/Fitness";
@@ -47,11 +47,9 @@ function App() {
   );
 }
 
-// Component to handle page transition
 const PageTransition = () => {
   const location = useLocation();
 
-  // Variants for page transition animation
   const pageVariants = {
     initial: { opacity: 0, y: 50 },
     animate: { opacity: 1, y: 0 },
@@ -71,8 +69,8 @@ const PageTransition = () => {
 
    // Smoother easing and duration
    const transitionConfig = {
-     duration: 0.8, // A bit longer for smoothness
-     ease: [0.25, 0.45, 0.45, 0.95], // Custom easing for smoother feel (easeInOut)
+     duration: 0.8, 
+     ease: [0.25, 0.45, 0.45, 0.95], 
    };
 
   return (
@@ -82,7 +80,7 @@ const PageTransition = () => {
       animate="animate"
       exit="exit"
       variants={
-        // Apply flip animation only to Login and Signup routes
+        
         location.pathname === "/login" || location.pathname === "/signup"
           ? flipVariants
           : fadeVariants

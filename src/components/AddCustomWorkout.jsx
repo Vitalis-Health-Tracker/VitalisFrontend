@@ -7,11 +7,9 @@ const AddCustomWorkout = ({ onAddCustomWorkout }) => {
   const [sets, setSets] = useState("");
   const [caloriesBurned, setCaloriesBurned] = useState("");
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validate fields (basic validation)
     if (
       !workoutName ||
       !reps ||
@@ -27,7 +25,6 @@ const AddCustomWorkout = ({ onAddCustomWorkout }) => {
       return;
     }
 
-    // Create the custom workout object
     const customWorkout = {
       name: workoutName,
       reps: parseInt(reps),
@@ -39,7 +36,6 @@ const AddCustomWorkout = ({ onAddCustomWorkout }) => {
     // Add the custom workout to the list
     onAddCustomWorkout(customWorkout);
 
-    // Clear the form fields
     setWorkoutName("");
     setReps("");
     setDuration("");
